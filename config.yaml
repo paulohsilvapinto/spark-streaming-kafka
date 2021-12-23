@@ -1,0 +1,17 @@
+AppName: kafkastrem
+MasterMode: yarn
+
+Stream:
+  Read:
+    BootstrapServers:
+      - "192.168.0.100:9092"
+      - "192.168.0.100:9093"
+    TopicName: my-kafka-topic
+    StartingOffsets: earliest
+  Write:
+    Format: parquet
+    OutputMode: append
+    OutputPath: my-kafka-events
+    TriggerTime: "30 seconds"
+    CheckpointPath: "spark-checkpoint/my-kafka-events-chkp"
+
